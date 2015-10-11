@@ -18,7 +18,7 @@
  - [Mock和Patch小技巧](chapter3/Mock_and_Patch.md)
  - [总结](chapter3/summary.md)
 * [第四章：写可测试的文档](chapter4/README.md)
- - [开始写一个测试文档](chapter4/wrting_your_first_doctest.md)
+ - [开始写一个测试文档](chapter4/writng_your_first_doctest.md)
  - [用nose集成测试文档](chapter4/Improving_doctests_with_nose_integration.md)
  - [总结](chapter4/summary.md)
 * [第五章：](chapter5/README.md)
