@@ -19,7 +19,7 @@
    * [总结](chapter3/summary.md)
 * [第四章：写可测试的文档](chapter4/README.md)
    * [开始写一个测试文档](chapter4/writing_your_first_doctest_md.md)
-   * [用nose集成测试文档](chapter4/Improving_doctests_with_nose_integration.md)
+   * [用nose集成测试文档](chapter4/improving_doctests_with_nose_integration_md.md)
    * [总结](chapter4/summary.md)
 * [第五章：](chapter5/README.md)
 * [第六章：](chapter6/README.md)
