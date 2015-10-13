@@ -83,6 +83,125 @@ $ python app/calculate.py
 $
 
 ```
+为了让你确定你的程序已经被执行，我们可以加上-v标志，来显示正在被运行的测试的信息。
+```
+$ python app/calculate.py -v
+Trying:
+    c = Calculate()
+Expecting nothing
+ok
+Trying:
+    c.add(1, 1)
+Expecting:
+2 ok
+Trying:
+    c.add(25, 125)
+Expecting:
+    150
+ok
+2 items had no tests:
+__main__
+    __main__.Calculate
+1 items passed all tests:
+   3 tests in __main__.Calculate.add
+3 tests in 3 items.
+3 passed and 0 failed.
+Test passed.
+```
+
+doctest的输出相当不错，清晰的显示了你的doctest执行的每一行——期望输出什么，是否通过了。doctest失败的时候，你也能得到失败的细节原因。将add(1,1)的结果改成3，去掉-v标志，你就能看到失败的doctest通知。
+```
+$ python app/calculate.py
+*******************************************************************
+File "app/calculate.py", line 10, in __main__.Calculate.add
+Failed example:
+    c.add(1, 1)
+Expected:
+3 Got:
+    2
+****************************************************************
+1 items had failures:
+   1 of   3 in __main__.Calculate.add
+***Test Failed*** 1 failures.
+
+```
+
+你可以清晰的看到是哪一行导致了这个错误，它期望输出什么，而实际上输出了什么。因此你就可以更新你的doctest文档让他正确，或者改变你的代码，让函数返回和文档一样的值。这次再试试加上-v标准显示更多的细节。
+
+### 处理错误示例
+
+你当然也可以将错误的示例演示给读者，展示出造成你的函数抛出一个异常的情况，测试它的确会这样发生。(#: todo)
+
+这可能是最好的指导了～当你在你的加函数中用了错误的输入。而加函数只支持两个整数，如果你传递一个float类型的数给该函数，一个 TypeError会被暴露出来。把下面的doctest加到doc string里面，去看看在该情境中异常是否被抛出。
+
+```
+def add(self, x, y):
+    """Takes two integers and adds them together to produce
+    the result.
+    >>> c = Calculate()
+    >>> c.add(1.0, 1.0)
+    Traceback (most recent call last):
+    ...     
+    TypeError: Invalid type: <type 'float'> and <type \ 'float'>
+    """
+    if type(x) == int and type(y) == int:
+        return x + y
+    else:
+        raise TypeError("Invalid type: {} and {}".format(type(x), type(y)))
+```
+
+当你期望某个异常被抛出，你必须以“Traceback(most recent call last):”或者 “Trackback (innermost last):”开头，这取决于在你的代码里这个异常是怎样被抛出的。接着你可以忽略traceback的主体部分，用省略号（...）代替他们，他们通常都是依赖与你正在使用的机器。而最后一行才是真正的你希望抛出的异常，包括了错误信息。当你现在再运行这个程序，它也会没有输出，测试通过。
+```
+$ python app/calculate.py
+$
+```
+
+运行doctest，加上-v标志，确保你的异常测试被正确执行。
+```
+$ python app/calculate.py -v
+Trying:
+    c = Calculate()
+Expecting nothing
+ok
+Trying:
+    c.add(1.0, 1.0)
+Expecting:
+    Traceback (most recent call last):
+     ...
+    TypeError: Invalid type: <type 'float'> and <type 'float'>
+ok
+3 items had no tests:
+    __main__
+    __main__.Calculate
+    __main__.Calculate.__init__
+1 items passed all tests:
+   4 tests in __main__.Calculate.add
+4 tests in 4 items.
+4 passed and 0 failed.
+Test passed.
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
