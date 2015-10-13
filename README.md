@@ -38,7 +38,12 @@ python的中文书籍以入门为主，基本都是国外著作的翻译版本�
 
 2015.10.8 开始萌生念头，开始翻译。
 
-2015.10.11 翻译完 [Mock和Patch使用技巧](https://wangshunping.gitbooks.io/testing_python/content/chapter3/Mock_and_Patch.html) 期待更多人加入。
+2015.10.11 翻译完3.3  [Mock和Patch使用技巧](https://wangshunping.gitbooks.io/testing_python/content/chapter3/Mock_and_Patch.html)  翻译者：wangshunping    校对者： 
+
+2015.10.14 翻译完4.1  [开始写你的doctest](https://wangshunping.gitbooks.io/testing_python/content/chapter4/writing_your_first_doctest_md.html) 翻译者：wangshunping    校对者： 
+
+
+期待更多人加入。
 
 
 
