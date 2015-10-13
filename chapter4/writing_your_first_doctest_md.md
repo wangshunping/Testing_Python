@@ -185,9 +185,32 @@ Test passed.
 
 如果你写doctest的技巧不够娴熟，他们很快会变的很大并且偏离你实际写的代码。doctest应该始终把阅读代码的人放在第一位并关注他们的感受。要知道，简洁的、描述性的函数的示例可以提供函数的上下文给阅读代码的开发者。你可以在你的doctest中应用一些小技巧来减少你需要写在doctest里的代码的数量。
 
-在那个计算器例子中，你的函数是类的一部分。因为这个原因，当你写doctest的时候，你必须实例化一个Calcute的类，然后才能按照你希望的调用类方法。一个类可能y
+在那个计算器例子中，你的函数是类的一部分。因为这个原因，当你写doctest的时候，你必须实例化一个Calcute的类，然后才能按照你希望的调用类方法。一个类可能有很多方法，在每个方法里面新建一个实例非常乏味，并且你还要敲很多空格。 其实dcotest支持上下文的传入，它可以在文件中的所有doctest里面调用。所以与其每次新建一个实例 c = Calculate()，你可以在doctest里面做一次。
 
+```
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod(extraglobs={'c': Calculate()})
+```
 
+有了这一个改进，你就不需要在你的doctest里面创造类实例了，整洁的代码就像下面这样。
+```
+def add(self, x, y):
+        """Takes two integers and adds them together to produce the result.
+        >>> c.add(1,1)
+        2
+        >>> c.add(25,125)
+        150
+        >>> c.add(1.0, 1.0)
+        Traceback (most recent call last):
+         ...
+        TypeError: Invalid type: <type 'float'> and <type 'float'>
+        """
+        if type(x) == int and type(y) == int:
+            return x + y
+        else:
+            raise TypeError("Invalid type: {} and {}".format(type(x), type(y)))
+```
 
 
 
