@@ -196,20 +196,20 @@ if __name__ == "__main__":
 有了这一个改进，你就不需要在你的doctest里面创造类实例了，整洁的代码就像下面这样。
 ```
 def add(self, x, y):
-        """Takes two integers and adds them together to produce the result.
-        >>> c.add(1,1)
-        2
-        >>> c.add(25,125)
-        150
-        >>> c.add(1.0, 1.0)
-        Traceback (most recent call last):
-         ...
-        TypeError: Invalid type: <type 'float'> and <type 'float'>
-        """
-        if type(x) == int and type(y) == int:
-            return x + y
-        else:
-            raise TypeError("Invalid type: {} and {}".format(type(x), type(y)))
+    """Takes two integers and adds them together to produce the result.
+    >>> c.add(1,1)
+    2
+    >>> c.add(25,125)
+    150
+    >>> c.add(1.0, 1.0)
+    Traceback (most recent call last):
+     ...
+    TypeError: Invalid type: <type 'float'> and <type 'float'>
+    """
+    if type(x) == int and type(y) == int:
+        return x + y
+    else:
+        raise TypeError("Invalid type: {} and {}".format(type(x), type(y)))
 ```
 
 
